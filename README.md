@@ -55,4 +55,4 @@
 コーラ10年分（同上1%）  
 
 □ソナー(光の広がり方)　　
-
+![soner](https://github.com/ReiKalan/GGJ2018_TUT_10/blob/patch-1/Assets/Other/soner.png)

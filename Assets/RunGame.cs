@@ -204,5 +204,21 @@ public class RunGame : MonoBehaviour {
 		//反対向き
 		var diff = nextPosition - nowPosition;
 		prevPosition = nowPosition - diff;
+
+		if (diff.x == 1 && diff.y == 0) {
+			mainCharacter.transform.Rotate (0f, 0f, 0f);
+
+		} else if (diff.x == -1 && diff.y == 0) {
+			mainCharacter.transform.Rotate (0f, 180f, 0f);
+
+		} else if (diff.x == 0 && diff.y == -1) {
+			mainCharacter.transform.Rotate (0f, 90f, 0f);
+		} else if (diff.x == 0 && diff.y == 1) {
+			mainCharacter.transform.Rotate (0f, -90f, 0f);			
+		}
+
+		if (OnChangeRotate != null) {
+			OnChangeRotate ();
+		}
 	}
 }

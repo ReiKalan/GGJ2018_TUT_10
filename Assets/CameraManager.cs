@@ -15,6 +15,7 @@ public class CameraManager : MonoBehaviour {
 	void Start () {
 		RunGame.instance.OnBeats += OnBeats;
 		RunGame.instance.OnChangeRotate += OnChangeRotate;
+		transform.rotation = RunGame.instance.mainCharacter.transform.rotation;
 	}
 	
 	// Update is called once per frame

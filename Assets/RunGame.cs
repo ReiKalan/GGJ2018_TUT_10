@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class RunGame : MonoBehaviour {
 
@@ -53,6 +54,8 @@ public class RunGame : MonoBehaviour {
 	public Vector2Int speed;
 
 	private float startTime;
+
+	public Text remainTimeText;
 
 	private float periodTime {
 		get {
@@ -133,6 +136,8 @@ public class RunGame : MonoBehaviour {
 		if (isGoal) {
 			return;
 		}
+
+		remainTimeText.text = string.Format ("{0:0.00}", field.stageTimeLimit - durationTime).Replace (".", ":");
 
 		if (!isStart && Input.GetMouseButtonDown(0)) {
 			prevStartUI.gameObject.SetActive (false);

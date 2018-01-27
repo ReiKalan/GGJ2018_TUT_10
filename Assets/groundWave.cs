@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class groundWave : MonoBehaviour {
 
-    [SerializeField] float spRadius;
-    [SerializeField] float ;
-    [SerializeField]
+  //  [SerializeField] float spRadius;
+  //  [SerializeField] float ;
+  //  [SerializeField]
 
     // Use this for initialization
     void Start () {

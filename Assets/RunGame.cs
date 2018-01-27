@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class RunGame : MonoBehaviour {
 
@@ -132,7 +133,7 @@ public class RunGame : MonoBehaviour {
 
 			var parts = field.GetParts (nowPosition.x, nowPosition.y);
 			if (parts == null || !parts.enable) {
-				deathEffect.SetActive (true);
+				StartCoroutine (ShowDeathEffect());
 			}
 		}
 
@@ -247,5 +248,16 @@ public class RunGame : MonoBehaviour {
 		if (OnChangeRotate != null) {
 			OnChangeRotate ();
 		}
+	}
+
+	IEnumerator ShowDeathEffect()
+	{
+		deathEffect.SetActive (true);
+
+		field.bgmSource.Stop ();
+
+		yield return new WaitForSeconds (3);
+
+		SceneManager.LoadScene("Title");
 	}
 }

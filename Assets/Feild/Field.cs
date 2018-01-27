@@ -6,6 +6,11 @@ public class Field : MonoBehaviour {
 
 	public GameObject blockPrefab;
 
+	public AudioSource bgmSource;
+
+	[SerializeField]
+	public float beatOffset = 0.27f;
+
 	//
 	public List<Parts> dataList = new List<Parts>();
 

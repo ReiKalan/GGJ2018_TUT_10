@@ -7,6 +7,18 @@ public class RunGame : MonoBehaviour {
 	public event System.Action OnChangeRotate;
 	public event System.Action OnBeats;
 
+	public AudioClip palsSound;
+	public AudioClip rotateSound;
+
+	public AudioSource seSource;
+	public AudioSource bgmSource
+	{
+		get
+		{
+			return field.bgmSource;
+		}
+	}
+
 	static RunGame _instance;
 	static public RunGame instance
 	{
@@ -35,12 +47,6 @@ public class RunGame : MonoBehaviour {
 	public Vector2Int speed;
 
 	private float startTime;
-	private float gameTime
-	{
-		get {
-			return Time.time - startTime;
-		}
-	}
 
 	[SerializeField]
 	private float periodTime = 1f; //周期[s]
@@ -49,7 +55,7 @@ public class RunGame : MonoBehaviour {
 	private float durationTime
 	{
 		get {
-			return Time.time - startTime;
+			return bgmSourceTime - startTime;
 		}
 	}
 
@@ -90,19 +96,50 @@ public class RunGame : MonoBehaviour {
 		_instance = this;
 	}
 
+	float bgmSourceTime
+	{
+		get
+		{
+			return bgmSource.time + field.beatOffset;
+		}
+	}
+
 	// Use this for initialization
 	void Start () {
 		mainCharacter.transform.position = new Vector3 (nowPosition.x, 1f, nowPosition.y);
 		GetStartNextPosition ();
+
+		bgmSource.Play();
+		startTime = 0;
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		if (prevBeat != Mathf.FloorToInt (beatCount)) {
+
+			//次のビートに行っている
+			prevBeat = Mathf.FloorToInt (beatCount);
+			Vector2Int diff = nextPosition - nowPosition;
+			prevPosition = nowPosition;
+			nowPosition = nextPosition;
+			nextPosition = nowPosition + diff;//そのまま進み続ける
+
+			Debug.Log ("beet!");
+			seSource.clip = palsSound;
+			seSource.Play ();
+
+			OnBeats ();
+
+			var parts = field.GetParts (nowPosition.x, nowPosition.y);
+			if (parts == null || !parts.enable) {
+				deathEffect.SetActive (true);
+			}
+		}
 
 		//タップした瞬間
 		if (Input.GetMouseButtonDown (0)) {
 			//タップした処理
-			tapTime = Time.time;
+			tapTime = bgmSourceTime;
 			tapPosition = Input.mousePosition;
 			Debug.Log ("tap");
 		}
@@ -110,7 +147,7 @@ public class RunGame : MonoBehaviour {
 		//フリック処理
 		if (Input.GetMouseButtonUp (0)) {
 			Vector3 diff = Input.mousePosition - tapPosition;
-			float timeDiff = Time.time - tapTime;
+			float timeDiff = bgmSourceTime - tapTime;
 			if (flickEnableWidth > Mathf.Abs (diff.x) 
 				&& timeDiff < flickEnableTime
 				&& diff.magnitude > flickThreshold) {
@@ -128,6 +165,9 @@ public class RunGame : MonoBehaviour {
 						nextPosition = preNextPosition;
 						mainCharacter.transform.Rotate (0, -90, 0);
 						OnChangeRotate ();
+
+						seSource.clip = rotateSound;
+						seSource.Play ();
 					}
 				} else {
 					Debug.Log ("下flic!");
@@ -143,6 +183,9 @@ public class RunGame : MonoBehaviour {
 						nextPosition = preNextPosition;
 						mainCharacter.transform.Rotate (0, 90, 0);
 						OnChangeRotate ();
+
+						seSource.clip = rotateSound;
+						seSource.Play ();
 					}
 				}
 			}
@@ -150,23 +193,6 @@ public class RunGame : MonoBehaviour {
 	}
 
 	void FixedUpdate() {
-		if (prevBeat != Mathf.FloorToInt (beatCount)) {
-
-			//次のビートに行っている
-			prevBeat = Mathf.FloorToInt (beatCount);
-			Vector2Int diff = nextPosition - nowPosition;
-			prevPosition = nowPosition;
-			nowPosition = nextPosition;
-			nextPosition = nowPosition + diff;//そのまま進み続ける
-
-			Debug.Log ("beet!");
-			OnBeats ();
-
-			var parts = field.GetParts (nowPosition.x, nowPosition.y);
-			if (parts == null || !parts.enable) {
-				deathEffect.SetActive (true);
-			}
-		}
 
 		//キャラの位置を合わせる
 		var tempNowPeriodTimePar = nowPeriodTimePar;
@@ -213,6 +239,7 @@ public class RunGame : MonoBehaviour {
 
 		} else if (diff.x == 0 && diff.y == -1) {
 			mainCharacter.transform.Rotate (0f, 90f, 0f);
+
 		} else if (diff.x == 0 && diff.y == 1) {
 			mainCharacter.transform.Rotate (0f, -90f, 0f);			
 		}

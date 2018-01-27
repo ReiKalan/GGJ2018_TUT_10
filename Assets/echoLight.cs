@@ -8,7 +8,7 @@ public class echoLight : MonoBehaviour {
     [SerializeField]
     AnimationCurve curve;
     [SerializeField] Light light;
-    [SerializeField] int bpm;
+    public int bpm;
     [SerializeField] int lightAngle =20;
 
     int combo = 0;

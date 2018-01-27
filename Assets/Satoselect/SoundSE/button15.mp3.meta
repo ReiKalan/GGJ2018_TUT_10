@@ -1,6 +1,16 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Satoselect/SoundSE/button15.mp3.meta
 guid: 728ac55ddc2816c42a04a9a2288764b8
 timeCreated: 1517074499
+=======
+<<<<<<< HEAD
+guid: ee50958872a525a45b43644c22917d39
+timeCreated: 1517072475
+=======
+guid: c202f5aab191ef04aa07ba9214cb838a
+timeCreated: 1517071782
+>>>>>>> 0b04e43ebe41f058edc06a31bfea4bb49d2f9f55
+>>>>>>> aed4f5d63013f7a787ff76666e45b91c365cab94:Assets/Satoselect/SoundSE/jump02.mp3.meta
 licenseType: Free
 AudioImporter:
   externalObjects: {}

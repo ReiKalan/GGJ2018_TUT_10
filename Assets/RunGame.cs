@@ -89,6 +89,7 @@ public class RunGame : MonoBehaviour {
 
 	bool isGoal = false;
 	bool isStart = false;
+	bool isDeath = false;
 
 	private float tapTime;
 	private Vector3 tapPosition;
@@ -169,6 +170,11 @@ public class RunGame : MonoBehaviour {
 				StartCoroutine (GoalEffect ());
 			}
 		}
+
+		if (!isDeath && field.stageTimeLimit <= durationTime) {
+			StartCoroutine (ShowDeathEffect());
+		}
+
 
 		//タップした瞬間
 		if (Input.GetMouseButtonDown (0)) {
@@ -299,6 +305,7 @@ public class RunGame : MonoBehaviour {
 
 	IEnumerator ShowDeathEffect()
 	{
+		isDeath = true;
 		deathEffect.SetActive (true);
 
 		field.bgmSource.Stop ();

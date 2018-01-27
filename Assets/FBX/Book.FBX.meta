@@ -14,7 +14,12 @@ ModelImporter:
     7400000: BookShow
     7400002: BookLoop
     9500000: //RootNode
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Book
+    second: {fileID: 2100000, guid: 2b4854181f6d4374da45a8beeb663353, type: 2}
   materials:
     importMaterials: 1
     materialName: 0

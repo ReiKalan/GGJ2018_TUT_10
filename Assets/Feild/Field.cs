@@ -16,6 +16,8 @@ public class Field : MonoBehaviour {
 
 	public float stageTimeLimit = 30;
 
+	public float periodTime = 1f; //周期[s]
+
 	[HideInInspector]
 	public Animator goalAnimator;
 

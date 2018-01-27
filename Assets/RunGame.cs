@@ -107,6 +107,7 @@ public class RunGame : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		nowPosition = field.startPosition;
 		mainCharacter.transform.position = new Vector3 (nowPosition.x, 1f, nowPosition.y);
 		GetStartNextPosition ();
 

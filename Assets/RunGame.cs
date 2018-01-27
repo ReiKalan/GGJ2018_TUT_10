@@ -47,6 +47,8 @@ public class RunGame : MonoBehaviour {
 
 	public GameObject prevStartUI;
 
+	public echoLight echoLiteInstance;
+
 	[HideInInspector]
 	public Vector2Int speed;
 
@@ -97,6 +99,9 @@ public class RunGame : MonoBehaviour {
 	[SerializeField]
 	private float flickThreshold = 1f;
 
+	[SerializeField]
+	private float successTimeDuration = 0.2f;
+
 	void Awake()
 	{
 		_instance = this;
@@ -115,6 +120,8 @@ public class RunGame : MonoBehaviour {
 		nowPosition = field.startPosition;
 		mainCharacter.transform.position = new Vector3 (nowPosition.x, 1f, nowPosition.y);
 		GetStartNextPosition ();
+
+		echoLiteInstance.periodTime = periodTime;
 	}
 	
 	// Update is called once per frame
@@ -166,6 +173,17 @@ public class RunGame : MonoBehaviour {
 			tapTime = bgmSourceTime;
 			tapPosition = Input.mousePosition;
 			Debug.Log ("tap");
+
+			float modTime = durationTime % periodTime;
+			if (!(successTimeDuration <= modTime && modTime <= modTime - successTimeDuration)) {
+				Debug.Log ("Success");
+				echoLiteInstance.addCombo ();
+				echoLiteInstance.Play ();
+			} else {
+				echoLiteInstance.comboReset ();
+				
+			}
+
 		}
 
 		//フリック処理

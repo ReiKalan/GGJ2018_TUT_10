@@ -5,8 +5,14 @@ using UnityEngine;
 public class Field : MonoBehaviour {
 
 	public GameObject blockPrefab;
+	public GameObject goalPrefab;
+	public GameObject nortsPrefab;
 
 	public AudioSource bgmSource;
+
+	public Vector2Int startPosition;
+
+	public Vector2Int goalPosition;
 
 	[SerializeField]
 	public float beatOffset = 0.27f;
@@ -30,10 +36,35 @@ public class Field : MonoBehaviour {
 		}
 		for (int x = 0	;x < width;++x) {
 			for (int z = 0;z < height;++z) {
-				if (GetParts(x, z).enable) {
+				if (GetParts (x, z).enable) {
 					InstatiateBlock (x, z);
+					InstatiateNotrtsForPartsAround (x, z);
 				}
 			}
+		}
+
+
+		//ゴールをつけます
+		Vector2Int prevPartsPos = new Vector2Int();
+		AroundLoop (goalPosition, v2 => {
+			var parts = GetParts (v2.x, v2.y);
+			if (parts != null && parts.enable) {
+				prevPartsPos = v2;
+			}
+		});
+		var gorlDirection = goalPosition - prevPartsPos;
+		if (gorlDirection.x == 1 && gorlDirection.y == 0) {
+			InstantiateGorl (goalPosition.x, goalPosition.y, -90);
+
+		} else if (gorlDirection.x == -1 && gorlDirection.y == 0) {
+			InstantiateGorl (goalPosition.x, goalPosition.y, 90);
+			
+		} else if (gorlDirection.x == 0 && gorlDirection.y == 1) {
+			InstantiateGorl (goalPosition.x, goalPosition.y, 180);
+			
+		} else if (gorlDirection.x == 0 && gorlDirection.y == -1) {
+			InstantiateGorl (goalPosition.x, goalPosition.y, 0);
+			
 		}
 	}
 
@@ -41,10 +72,48 @@ public class Field : MonoBehaviour {
 		Refresh ();
 	}
 
+	private void InstantiateGorl(int x, int z, float rotateY) {
+		var goal = Instantiate (goalPrefab);
+		goal.transform.SetParent (transform, false);
+		goal.transform.position = new Vector3 (x, 0f, z);
+		goal.transform.Rotate (0, rotateY, 0);
+	}
+
 	private void InstatiateBlock(int x, int z) {
 		GameObject gameObject =  Instantiate (blockPrefab);
 		gameObject.transform.SetParent (transform, false);
 		gameObject.transform.position = new Vector3 (x, 0, z);
+	}
+
+	private void InstatiateNotrtsForPartsAround(int x, int z) {
+
+		foreach (var item in aroundLoopList) {
+			var sidePartsPos = new Vector2Int (x, z) + item;
+			var parts = GetParts (sidePartsPos.x, sidePartsPos.y);
+			if (parts != null && parts.enable) {
+
+				if (item.x == 1 && item.y == 0) {
+					InstatiateNotrts (x + 0.5f, z, 0);
+
+				} else if (item.x == -1 && item.y == 0) {
+					InstatiateNotrts (x - 0.5f, z, 0);
+
+				} else if (item.x == 0 && item.y == 1) {
+					InstatiateNotrts (x, z + 0.5f, 90);
+
+				} else if (item.x == 0 && item.y == -1) {
+					InstatiateNotrts (x, z - 0.5f, 90);
+
+				}
+			}
+		}
+	}
+
+	private void InstatiateNotrts(float x, float z, float rotateY) {
+		GameObject gameObject =  Instantiate (nortsPrefab);
+		gameObject.transform.SetParent (transform, false);
+		gameObject.transform.position = new Vector3 (x, 0, z);
+		gameObject.transform.Rotate (0, rotateY, 0);
 	}
 
 	private void ClearBlock() {

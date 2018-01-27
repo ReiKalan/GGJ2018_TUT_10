@@ -1,4 +1,5 @@
-□タイトル
+□タイトル  
+お宝は紳士は眠る　　
 
 □コンセプト  
 リズムに乗って遺跡を探索！
@@ -56,3 +57,6 @@
 
 □ソナー(光の広がり方)　　
 ![soner](https://github.com/ReiKalan/GGJ2018_TUT_10/blob/patch-1/Assets/Other/soner.png)
+
+□主人公の名前　　
+ジェント

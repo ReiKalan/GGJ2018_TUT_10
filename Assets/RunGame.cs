@@ -4,6 +4,18 @@ using UnityEngine;
 
 public class RunGame : MonoBehaviour {
 
+	public event System.Action OnChangeRotate;
+	public event System.Action OnBeats;
+
+	static RunGame _instance;
+	static public RunGame instance
+	{
+		get
+		{
+			return _instance;
+		}
+	}
+
 	public GameObject mainCharacter;
 
 	public GameObject deathEffect;
@@ -73,6 +85,10 @@ public class RunGame : MonoBehaviour {
 	[SerializeField]
 	private float flickThreshold = 1f;
 
+	void Awake()
+	{
+		_instance = this;
+	}
 
 	// Use this for initialization
 	void Start () {
@@ -106,8 +122,13 @@ public class RunGame : MonoBehaviour {
 					nextDirection.x = nowDirection.x * (int)Mathf.Cos(rad) - nowDirection.y * (int)Mathf.Sin(rad);
 					nextDirection.y = nowDirection.x * (int)Mathf.Sin(rad) + nowDirection.y * (int)Mathf.Cos(rad);
 
-					nextPosition = nowPosition + nextDirection;
-					mainCharacter.transform.Rotate (0, -90, 0);
+					var preNextPosition = nowPosition + nextDirection;
+					var parts = field.GetParts (preNextPosition.x, preNextPosition.y);
+					if (parts != null && parts.enable) {
+						nextPosition = preNextPosition;
+						mainCharacter.transform.Rotate (0, -90, 0);
+						OnChangeRotate ();
+					}
 				} else {
 					Debug.Log ("下flic!");
 					Vector2Int nowDirection = nextPosition - nowPosition;
@@ -116,10 +137,13 @@ public class RunGame : MonoBehaviour {
 					nextDirection.x = nowDirection.x * (int)Mathf.Cos(rad) - nowDirection.y * (int)Mathf.Sin(rad);
 					nextDirection.y = nowDirection.x * (int)Mathf.Sin(rad) + nowDirection.y * (int)Mathf.Cos(rad);
 
-					nextPosition = nowPosition + nextDirection;
-
-
-					mainCharacter.transform.Rotate (0, 90, 0);
+					var preNextPosition = nowPosition + nextDirection;
+					var parts = field.GetParts (preNextPosition.x, preNextPosition.y);
+					if (parts != null && parts.enable) {
+						nextPosition = preNextPosition;
+						mainCharacter.transform.Rotate (0, 90, 0);
+						OnChangeRotate ();
+					}
 				}
 			}
 		}
@@ -136,6 +160,7 @@ public class RunGame : MonoBehaviour {
 			nextPosition = nowPosition + diff;//そのまま進み続ける
 
 			Debug.Log ("beet!");
+			OnBeats ();
 
 			var parts = field.GetParts (nowPosition.x, nowPosition.y);
 			if (parts == null || !parts.enable) {

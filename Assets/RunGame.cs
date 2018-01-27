@@ -10,6 +10,7 @@ public class RunGame : MonoBehaviour {
 
 	public AudioClip palsSound;
 	public AudioClip rotateSound;
+	public AudioClip startSound;
 
 	public AudioSource seSource;
 	public AudioSource bgmSource
@@ -43,6 +44,8 @@ public class RunGame : MonoBehaviour {
 	private Vector2Int nextPosition;
 
 	public Field field;
+
+	public GameObject prevStartUI;
 
 	[HideInInspector]
 	public Vector2Int speed;
@@ -80,6 +83,7 @@ public class RunGame : MonoBehaviour {
 	int prevBeat;
 
 	bool isGoal = false;
+	bool isStart = false;
 
 	private float tapTime;
 	private Vector3 tapPosition;
@@ -111,14 +115,23 @@ public class RunGame : MonoBehaviour {
 		nowPosition = field.startPosition;
 		mainCharacter.transform.position = new Vector3 (nowPosition.x, 1f, nowPosition.y);
 		GetStartNextPosition ();
-
-		bgmSource.Play();
-		startTime = 0;
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		if (isGoal) {
+			return;
+		}
+
+		if (!isStart && Input.GetMouseButtonDown(0)) {
+			prevStartUI.gameObject.SetActive (false);
+			isStart = true;
+
+			bgmSource.Play();
+			startTime = 0;
+
+			seSource.clip = startSound;
+			seSource.Play ();
 			return;
 		}
 

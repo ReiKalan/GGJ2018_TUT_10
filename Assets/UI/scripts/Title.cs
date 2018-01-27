@@ -22,7 +22,7 @@ public class Title : MonoBehaviour {
         }*/
         if(Input.GetMouseButtonDown(0))
         {
-            SceneManager.LoadScene("game");
+            SceneManager.LoadScene("GameScene");
         }
 	}
 }

@@ -14,6 +14,8 @@ public class Field : MonoBehaviour {
 
 	public Vector2Int goalPosition;
 
+	public float stageTimeLimit = 30;
+
 	[HideInInspector]
 	public Animator goalAnimator;
 

@@ -1,12 +1,17 @@
 fileFormatVersion: 2
 guid: d29da51a201c0fa438a235a7c4684e08
-timeCreated: 1517040786
+timeCreated: 1517050886
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
     21300000: GUI_Tap2Start
     21300002: GUI_GameOver
     21300004: GUI_ReturnTitle
+    21300006: GUI_combo
+    21300008: GUI_getWord
+    21300010: GUI_getBook
+    21300012: GUI_getGold
+    21300014: GUI_getCora
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -101,7 +106,7 @@ TextureImporter:
         width: 1286
         height: 278
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -115,7 +120,7 @@ TextureImporter:
         width: 2016
         height: 385
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -129,7 +134,77 @@ TextureImporter:
         width: 1874
         height: 192
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: GUI_combo
+      rect:
+        serializedVersion: 2
+        x: 1308
+        y: 1792
+        width: 732
+        height: 193
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: GUI_getWord
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 1015
+        width: 692
+        height: 114
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: GUI_getBook
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 875
+        width: 591
+        height: 117
+      alignment: 5
+      pivot: {x: 1, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: GUI_getGold
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 736
+        width: 471
+        height: 117
+      alignment: 5
+      pivot: {x: 1, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: GUI_getCora
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 596
+        width: 676
+        height: 120
+      alignment: 5
+      pivot: {x: 1, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

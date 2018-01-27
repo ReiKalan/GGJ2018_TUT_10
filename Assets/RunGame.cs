@@ -54,8 +54,11 @@ public class RunGame : MonoBehaviour {
 
 	private float startTime;
 
-	[SerializeField]
-	private float periodTime = 1f; //周期[s]
+	private float periodTime {
+		get {
+			return field.periodTime;
+		}
+	}
 
 	//始まってから何秒経過したか
 	private float durationTime

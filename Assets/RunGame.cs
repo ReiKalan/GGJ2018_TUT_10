@@ -13,6 +13,12 @@ public class RunGame : MonoBehaviour {
 	public AudioClip rotateSound;
 	public AudioClip startSound;
 
+
+	public AudioClip successSound;
+	public AudioClip faildSound;
+
+
+	public AudioSource palsSource;
 	public AudioSource seSource;
 	public AudioSource bgmSource
 	{
@@ -162,8 +168,8 @@ public class RunGame : MonoBehaviour {
 			nextPosition = nowPosition + diff;//そのまま進み続ける
 
 			Debug.Log ("beet!");
-			seSource.clip = palsSound;
-			seSource.Play ();
+			palsSource.clip = palsSound;
+			palsSource.Play ();
 
 			OnBeats ();
 
@@ -190,13 +196,19 @@ public class RunGame : MonoBehaviour {
 			Debug.Log ("tap");
 
 			float modTime = durationTime % periodTime;
-			if (!(successTimeDuration <= modTime && modTime <= modTime - successTimeDuration)) {
-				Debug.Log ("Success");
+			if (!(successTimeDuration <= modTime && modTime <= periodTime - successTimeDuration)) {
+				Debug.Log ("Success" + modTime);
+
+				seSource.clip = successSound;
+				seSource.Play ();
+
 				echoLiteInstance.addCombo ();
 				echoLiteInstance.Play ();
 			} else {
 				echoLiteInstance.comboReset ();
-				
+
+				seSource.clip = faildSound;
+				seSource.Play ();
 			}
 
 		}

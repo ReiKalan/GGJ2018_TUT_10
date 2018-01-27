@@ -120,8 +120,22 @@ public class FieldEditorWindow : EditorWindow
 		var text = "";
 		if (p.enable) {
 			style = enableStyle;
-			text = "■";
+			if (field.startPosition == new Vector2Int (x, y)) {
+				text = "S";
+			} else if (field.goalPosition == new Vector2Int(x, y)) {
+				text = "G";
+								
+			} else {
+				text = "■";
+			}
 		} else {
+			if (field.startPosition == new Vector2Int (x, y)) {
+				text = "☓";
+			} else if (field.goalPosition == new Vector2Int(x, y)) {
+				text = "☓";
+
+			} else {
+			}
 			style = disableStyle;
 		}
 

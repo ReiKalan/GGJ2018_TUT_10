@@ -1,4 +1,4 @@
-□タイトル  
+□タイトル  
 お宝は紳士は眠る　　
 
 □コンセプト  
@@ -58,5 +58,5 @@
 □ソナー(光の広がり方)　　
 ![soner](https://github.com/ReiKalan/GGJ2018_TUT_10/blob/master/Assets/Other/soner.png)
 
-□主人公の名前　　
-ジェント
+□主人公の名前  
+ジェントル

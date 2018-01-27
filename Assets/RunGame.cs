@@ -50,7 +50,18 @@ public class RunGame : MonoBehaviour {
 	//次に行く位置
 	private Vector2Int nextPosition;
 
-	public Field field;
+	private Field _field;
+	public Field field {
+		get {
+			if (_field == null) {
+				if (StageSelectScene.fieldPrefab != null) {
+					var instance = Instantiate (StageSelectScene.fieldPrefab);
+					_field = instance.GetComponent<Field>();
+				}
+			}
+			return _field;
+		}
+	}
 
 	public GameObject prevStartUI;
 
@@ -336,7 +347,7 @@ public class RunGame : MonoBehaviour {
 
 		yield return new WaitForSeconds (2);
 
-		SceneManager.LoadScene("Title");
+		SceneManager.LoadScene("StageSelect");
 	}
 
 	IEnumerator GoalEffect()

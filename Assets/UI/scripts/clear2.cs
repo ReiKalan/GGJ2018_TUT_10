@@ -16,7 +16,7 @@ public class clear2 : MonoBehaviour {
 	void Update () {
 		if(Input.GetMouseButtonDown(0))
         {
-            SceneManager.LoadScene("Title");   
+			SceneManager.LoadScene("StageSelect");   
         }
 	}
 }

@@ -305,6 +305,10 @@ public class RunGame : MonoBehaviour {
 
 	IEnumerator ShowDeathEffect()
 	{
+		if (isGoal) {
+			yield break;
+		}
+		
 		isDeath = true;
 		deathEffect.SetActive (true);
 

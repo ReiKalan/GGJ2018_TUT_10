@@ -151,7 +151,8 @@ public class RunGame : MonoBehaviour {
 			return;
 		}
 
-		if (prevBeat != Mathf.FloorToInt (beatCount)) {
+		if (prevBeat != Mathf.FloorToInt (beatCount))
+		{
 
 			//次のビートに行っている
 			prevBeat = Mathf.FloorToInt (beatCount);
@@ -254,22 +255,24 @@ public class RunGame : MonoBehaviour {
 		}
 
 		//キャラの位置を合わせる
-		var tempNowPeriodTimePar = nowPeriodTimePar;
-		if (tempNowPeriodTimePar < 0.5f) {
+		if (prevBeat == Mathf.FloorToInt (beatCount)) {
+			var tempNowPeriodTimePar = nowPeriodTimePar;
+			if (tempNowPeriodTimePar < 0.5f) {
 
-			//前半
-			var diff = prevPosition - nowPosition;
-			mainCharacter.transform.position = new Vector3 (
-				(float)nowPosition.x - (float)diff.x * tempNowPeriodTimePar + diff.x * 0.5f,
-				1f,
-				(float)nowPosition.y - (float)diff.y * tempNowPeriodTimePar + diff.y * 0.5f);
-		} else {
-			//後半
-			var diff = nextPosition - nowPosition;
-			mainCharacter.transform.position = new Vector3 (
-				(float)nowPosition.x + (float)diff.x * (tempNowPeriodTimePar - 0.5f),
-				1f,
-				(float)nowPosition.y + (float)diff.y * (tempNowPeriodTimePar - 0.5f));
+				//前半
+				var diff = prevPosition - nowPosition;
+				mainCharacter.transform.position = new Vector3 (
+					(float)nowPosition.x - (float)diff.x * tempNowPeriodTimePar + diff.x * 0.5f,
+					1f,
+					(float)nowPosition.y - (float)diff.y * tempNowPeriodTimePar + diff.y * 0.5f);
+			} else {
+				//後半
+				var diff = nextPosition - nowPosition;
+				mainCharacter.transform.position = new Vector3 (
+					(float)nowPosition.x + (float)diff.x * (tempNowPeriodTimePar - 0.5f),
+					1f,
+					(float)nowPosition.y + (float)diff.y * (tempNowPeriodTimePar - 0.5f));
+			}
 		}
 	}
 

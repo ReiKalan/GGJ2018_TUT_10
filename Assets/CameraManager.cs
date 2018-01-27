@@ -10,6 +10,7 @@ public class CameraManager : MonoBehaviour {
 	float cameraMoveTIme = 0f;
 
 	bool animateStart = false;
+	bool changeRotate = false;
 
 	// Use this for initialization
 	void Start () {
@@ -28,6 +29,7 @@ public class CameraManager : MonoBehaviour {
 			if (cameraMoveTIme / cameraMoveDuretion > 1f) {
 				transform.rotation = targetEuler;
 
+				changeRotate = false;
 				animateStart = false;
 			} else {
 				var fromEuler = transform.rotation;
@@ -41,11 +43,17 @@ public class CameraManager : MonoBehaviour {
 	void OnChangeRotate() {
 		targetEuler = RunGame.instance.mainCharacter.transform.rotation;
 
+		changeRotate = true;
+
 		//このコメントを外すと
 		//animateStart = false;
 	}
 
 	void OnBeats() {
+		if (!changeRotate) {
+			return;
+		}
+
 		cameraMoveTIme = 0f;
 		animateStart = true;
 	}

@@ -40077,7 +40077,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -40125,7 +40125,7 @@ MonoBehaviour:
     type: 2}
   bgmSource: {fileID: 82459268523273260}
   startPosition: {x: 8, y: 18}
-  goalPosition: {x: 10, y: 12}
+  goalPosition: {x: 10, y: 13}
   stageTimeLimit: 30
   periodTime: 0.4
   goalAnimator: {fileID: 95261410902291206}

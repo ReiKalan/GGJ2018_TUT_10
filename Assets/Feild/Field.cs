@@ -14,6 +14,9 @@ public class Field : MonoBehaviour {
 
 	public Vector2Int goalPosition;
 
+	[HideInInspector]
+	public Animator goalAnimator;
+
 	[SerializeField]
 	public float beatOffset = 0.27f;
 
@@ -77,6 +80,8 @@ public class Field : MonoBehaviour {
 		goal.transform.SetParent (transform, false);
 		goal.transform.position = new Vector3 (x, 0f, z);
 		goal.transform.Rotate (0, rotateY, 0);
+
+		goalAnimator = goal.GetComponentInChildren<Animator> ();
 	}
 
 	private void InstatiateBlock(int x, int z) {

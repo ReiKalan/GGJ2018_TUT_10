@@ -79,6 +79,7 @@ public class RunGame : MonoBehaviour {
 
 	int prevBeat;
 
+	bool isGoal = false;
 
 	private float tapTime;
 	private Vector3 tapPosition;
@@ -117,6 +118,10 @@ public class RunGame : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if (isGoal) {
+			return;
+		}
+
 		if (prevBeat != Mathf.FloorToInt (beatCount)) {
 
 			//次のビートに行っている
@@ -135,6 +140,10 @@ public class RunGame : MonoBehaviour {
 			var parts = field.GetParts (nowPosition.x, nowPosition.y);
 			if (parts == null || !parts.enable) {
 				StartCoroutine (ShowDeathEffect());
+			}
+
+			if (nowPosition == field.goalPosition) {
+				StartCoroutine (GoalEffect ());
 			}
 		}
 
@@ -195,6 +204,9 @@ public class RunGame : MonoBehaviour {
 	}
 
 	void FixedUpdate() {
+		if (isGoal) {
+			return;
+		}
 
 		//キャラの位置を合わせる
 		var tempNowPeriodTimePar = nowPeriodTimePar;
@@ -257,8 +269,26 @@ public class RunGame : MonoBehaviour {
 
 		field.bgmSource.Stop ();
 
-		yield return new WaitForSeconds (3);
+		yield return new WaitForSeconds (2);
 
 		SceneManager.LoadScene("Title");
+	}
+
+	IEnumerator GoalEffect()
+	{
+		isGoal = true;
+
+		//カメラ演出
+		Camera.main.transform.position = mainCharacter.transform.position;
+		Camera.main.transform.LookAt (field.goalAnimator.transform);
+
+		yield return new WaitForSeconds (0.5f);
+
+		field.goalAnimator.SetTrigger ("goal");
+
+		yield return new WaitForSeconds(3f);
+
+		SceneManager.LoadScene("lotteryClear");
+		
 	}
 }

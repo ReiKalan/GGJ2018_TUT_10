@@ -653,9 +653,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0e80cc1de2b640169aeffa1b954de9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  palsSound: {fileID: 8300000, guid: 989afb46c0b181b41a3db3d578ae6efc, type: 3}
-  rotateSound: {fileID: 8300000, guid: 989afb46c0b181b41a3db3d578ae6efc, type: 3}
-  startSound: {fileID: 8300000, guid: 989afb46c0b181b41a3db3d578ae6efc, type: 3}
+  palsSound: {fileID: 8300000, guid: 97a9772a1eeaf47419d04fbdfeafff23, type: 3}
+  rotateSound: {fileID: 8300000, guid: 97a9772a1eeaf47419d04fbdfeafff23, type: 3}
+  startSound: {fileID: 8300000, guid: 0b950dae316f39742af8208e537858ac, type: 3}
   seSource: {fileID: 1467843896}
   mainCharacter: {fileID: 2054813711}
   deathEffect: {fileID: 987676222}
@@ -749,7 +749,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:

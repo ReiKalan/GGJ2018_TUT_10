@@ -219,22 +219,25 @@ public class RunGame : MonoBehaviour {
 			tapPosition = Input.mousePosition;
 			Debug.Log ("tap");
 
-			float modTime = durationTime % periodTime;
-			if (!(successTimeDuration <= modTime && modTime <= periodTime - successTimeDuration)) {
-				Debug.Log ("Success" + modTime);
+			if (!isDeath) {
+				float modTime = durationTime % periodTime;
+				if (!(successTimeDuration <= modTime && modTime <= periodTime - successTimeDuration)) {
+					Debug.Log ("Success" + modTime);
 
-				seSource.clip = successSound;
-				seSource.Play ();
+					seSource.clip = successSound;
+					seSource.Play ();
 
-				echoLiteInstance.addCombo ();
-				echoLiteInstance.Play ();
+					echoLiteInstance.addCombo ();
+					echoLiteInstance.Play ();
 
-				StartCoroutine (StartComboEffect(echoLiteInstance.combo));
-			} else {
-				echoLiteInstance.comboReset ();
+					StartCoroutine (StartComboEffect(echoLiteInstance.combo));
+				} else {
+					echoLiteInstance.comboReset ();
 
-				seSource.clip = faildSound;
-				seSource.Play ();
+					seSource.clip = faildSound;
+					seSource.Play ();
+				}
+				
 			}
 
 		}

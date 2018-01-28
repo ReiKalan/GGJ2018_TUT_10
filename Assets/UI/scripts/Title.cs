@@ -7,7 +7,7 @@ public class Title : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+		SceneManager.LoadScene ("BGM", LoadSceneMode.Additive);
 	}
 	
 	// Update is called once per frame
@@ -22,7 +22,8 @@ public class Title : MonoBehaviour {
         }*/
         if(Input.GetMouseButtonDown(0))
         {
-            SceneManager.LoadScene("StageSelect");
+			SceneManager.UnloadSceneAsync ("Title");
+			SceneManager.LoadScene("StageSelect", LoadSceneMode.Additive);
         }
 	}
 }

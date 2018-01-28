@@ -8,6 +8,6 @@ PhysicMaterial:
   m_Name: ColaPysix
   dynamicFriction: 0.8
   staticFriction: 0.8
-  bounciness: 0
+  bounciness: 1
   frictionCombine: 0
   bounceCombine: 0

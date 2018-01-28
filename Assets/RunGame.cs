@@ -37,6 +37,8 @@ public class RunGame : MonoBehaviour {
 		}
 	}
 
+	public UICombo comboEffect;
+
 	public GameObject mainCharacter;
 
 	public GameObject deathEffect;
@@ -50,6 +52,7 @@ public class RunGame : MonoBehaviour {
 	//次に行く位置
 	private Vector2Int nextPosition;
 
+	[SerializeField]
 	private Field _field;
 	public Field field {
 		get {
@@ -147,6 +150,14 @@ public class RunGame : MonoBehaviour {
 
 		echoLiteInstance.periodTime = periodTime;
 	}
+
+	IEnumerator StartComboEffect(int combo) {
+		comboEffect.gameObject.SetActive (true);
+		comboEffect.comboText.text = string.Format ("{0}", combo);
+		yield return new WaitForSeconds (0.3f);
+
+		comboEffect.gameObject.SetActive (false);
+	}
 	
 	// Update is called once per frame
 	void Update () {
@@ -215,6 +226,8 @@ public class RunGame : MonoBehaviour {
 
 				echoLiteInstance.addCombo ();
 				echoLiteInstance.Play ();
+
+				StartCoroutine (StartComboEffect(echoLiteInstance.combo));
 			} else {
 				echoLiteInstance.comboReset ();
 

@@ -13,7 +13,7 @@ public class echoLight : MonoBehaviour {
     [SerializeField] float contractRadiusTime = 0.5f;
     [SerializeField] int lightAngle = 20;
 
-    int combo = 0;
+    public int combo = 0;
 
     // Use this for initialization
     void Start () {

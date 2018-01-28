@@ -32,3 +32,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/UI/lotteryClear.unity
     guid: 957fab7718609e942aadbd3b36207061
+  - enabled: 1
+    path: Assets/BGM.unity
+    guid: 625173585ede84c33b4c5603e6e77560

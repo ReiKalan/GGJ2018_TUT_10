@@ -1357,7 +1357,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   palsSound: {fileID: 8300000, guid: baa3b814bbd04c74eaa54b897c40bf99, type: 3}
   rotateSound: {fileID: 8300000, guid: 989afb46c0b181b41a3db3d578ae6efc, type: 3}
-  startSound: {fileID: 8300000, guid: 0b950dae316f39742af8208e537858ac, type: 3}
+  startSound: {fileID: 8300000, guid: 5829b4e0ca6722e4aa777c620303083b, type: 3}
   successSound: {fileID: 8300000, guid: 989afb46c0b181b41a3db3d578ae6efc, type: 3}
   faildSound: {fileID: 8300000, guid: e3f31343a6e1c50479eb6feca88a276d, type: 3}
   palsSource: {fileID: 1467843897}
@@ -1377,7 +1377,7 @@ MonoBehaviour:
   flickEnableWidth: 1000
   flickEnableTime: 1
   flickThreshold: 1
-  successTimeDuration: 0.1
+  successTimeDuration: 0.14
 --- !u!4 &1467843895
 Transform:
   m_ObjectHideFlags: 0

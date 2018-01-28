@@ -37,6 +37,8 @@ public class RunGame : MonoBehaviour {
 		}
 	}
 
+	public UICombo comboEffect;
+
 	public GameObject mainCharacter;
 
 	public GameObject deathEffect;
@@ -50,6 +52,7 @@ public class RunGame : MonoBehaviour {
 	//次に行く位置
 	private Vector2Int nextPosition;
 
+	[SerializeField]
 	private Field _field;
 	public Field field {
 		get {
@@ -126,6 +129,8 @@ public class RunGame : MonoBehaviour {
 	[SerializeField]
 	private float successTimeDuration = 0.2f;
 
+	private int lastFlickBeat = 0;
+
 	void Awake()
 	{
 		_instance = this;
@@ -146,6 +151,14 @@ public class RunGame : MonoBehaviour {
 		GetStartNextPosition ();
 
 		echoLiteInstance.periodTime = periodTime;
+	}
+
+	IEnumerator StartComboEffect(int combo) {
+		comboEffect.gameObject.SetActive (true);
+		comboEffect.comboText.text = string.Format ("{0}", combo);
+		yield return new WaitForSeconds (0.3f);
+
+		comboEffect.gameObject.SetActive (false);
 	}
 	
 	// Update is called once per frame
@@ -206,20 +219,25 @@ public class RunGame : MonoBehaviour {
 			tapPosition = Input.mousePosition;
 			Debug.Log ("tap");
 
-			float modTime = durationTime % periodTime;
-			if (!(successTimeDuration <= modTime && modTime <= periodTime - successTimeDuration)) {
-				Debug.Log ("Success" + modTime);
+			if (!isDeath) {
+				float modTime = durationTime % periodTime;
+				if (!(successTimeDuration <= modTime && modTime <= periodTime - successTimeDuration)) {
+					Debug.Log ("Success" + modTime);
 
-				seSource.clip = successSound;
-				seSource.Play ();
+					seSource.clip = successSound;
+					seSource.Play ();
 
-				echoLiteInstance.addCombo ();
-				echoLiteInstance.Play ();
-			} else {
-				echoLiteInstance.comboReset ();
+					echoLiteInstance.addCombo ();
+					echoLiteInstance.Play ();
 
-				seSource.clip = faildSound;
-				seSource.Play ();
+					StartCoroutine (StartComboEffect(echoLiteInstance.combo));
+				} else {
+					echoLiteInstance.comboReset ();
+
+					seSource.clip = faildSound;
+					seSource.Play ();
+				}
+				
 			}
 
 		}
@@ -230,7 +248,11 @@ public class RunGame : MonoBehaviour {
 			float timeDiff = bgmSourceTime - tapTime;
 			if (flickEnableWidth > Mathf.Abs (diff.x) 
 				&& timeDiff < flickEnableTime
-				&& diff.magnitude > flickThreshold) {
+				&& diff.magnitude > flickThreshold
+				&& lastFlickBeat != Mathf.FloorToInt(beatCount)) {
+
+				lastFlickBeat = Mathf.FloorToInt (beatCount);
+
 				if (diff.y > 0) {
 					Debug.Log ("上flic!");
 					Vector2Int nowDirection = nextPosition - nowPosition;

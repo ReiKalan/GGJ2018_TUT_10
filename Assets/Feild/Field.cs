@@ -19,7 +19,7 @@ public class Field : MonoBehaviour {
 	public float periodTime = 1f; //周期[s]
 
 	[HideInInspector]
-	public Animator goalAnimator;
+	public GameObject goalObject;
 
 	[SerializeField]
 	public float beatOffset = 0.27f;
@@ -75,7 +75,7 @@ public class Field : MonoBehaviour {
 		}
 	}
 
-	void Start() {
+	void Awake() {
 		Refresh ();
 	}
 
@@ -85,7 +85,7 @@ public class Field : MonoBehaviour {
 		goal.transform.position = new Vector3 (x, 0f, z);
 		goal.transform.Rotate (0, rotateY, 0);
 
-		goalAnimator = goal.GetComponentInChildren<Animator> ();
+		goalObject = goal;
 	}
 
 	private void InstatiateBlock(int x, int z) {

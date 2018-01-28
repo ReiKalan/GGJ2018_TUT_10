@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.Playables;
+using Cinemachine;
 
 public class RunGame : MonoBehaviour {
 
@@ -69,6 +71,11 @@ public class RunGame : MonoBehaviour {
 	public GameObject prevStartUI;
 
 	public echoLight echoLiteInstance;
+
+	public GameObject goalObject;
+	public PlayableDirector timeline;
+
+	public CinemachineBrain cinemachineBrain;
 
 	[HideInInspector]
 	public Vector2Int speed;
@@ -151,6 +158,8 @@ public class RunGame : MonoBehaviour {
 		GetStartNextPosition ();
 
 		echoLiteInstance.periodTime = periodTime;
+
+		goalObject.transform.SetParent (field.goalObject.transform, false);
 	}
 
 	IEnumerator StartComboEffect(int combo) {
@@ -376,15 +385,9 @@ public class RunGame : MonoBehaviour {
 	{
 		isGoal = true;
 
-		//カメラ演出
-		Camera.main.transform.position = mainCharacter.transform.position;
-		Camera.main.transform.LookAt (field.goalAnimator.transform);
-
-		yield return new WaitForSeconds (0.5f);
-
-		field.goalAnimator.SetTrigger ("goal");
-
-		yield return new WaitForSeconds(3f);
+		cinemachineBrain.enabled = true;
+		timeline.gameObject.SetActive (true);
+		yield return new WaitForSeconds((float)timeline.duration);
 
 		SceneManager.LoadScene("lotteryClear");
 		

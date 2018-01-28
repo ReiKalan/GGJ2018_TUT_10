@@ -9618,7 +9618,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   blockPrefab: {fileID: 1663786626116982, guid: d609e341a0098674c8e563285fa123df,
     type: 2}
-  goalPrefab: {fileID: 1410517619235514, guid: c4b8d8261e9974822aa74e9462db529b, type: 2}
+  goalPrefab: {fileID: 1627350123629748, guid: fe8f37972a3ca4da5bf5994b15adbe7e, type: 2}
   nortsPrefab: {fileID: 1327080133267766, guid: b33ea750ae5e6204d8eabfc49ffe36c6,
     type: 2}
   bgmSource: {fileID: 82379096173500402}
@@ -9626,7 +9626,7 @@ MonoBehaviour:
   goalPosition: {x: 15, y: 1}
   stageTimeLimit: 30
   periodTime: 0.8
-  goalAnimator: {fileID: 95778807147917036}
+  goalObject: {fileID: 0}
   beatOffset: 0
   dataList:
   - enable: 0

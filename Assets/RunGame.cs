@@ -136,6 +136,9 @@ public class RunGame : MonoBehaviour {
 	[SerializeField]
 	private float successTimeDuration = 0.2f;
 
+
+	private int lastFlickBeat = 0;
+
 	void Awake()
 	{
 		_instance = this;
@@ -252,7 +255,10 @@ public class RunGame : MonoBehaviour {
 			float timeDiff = bgmSourceTime - tapTime;
 			if (flickEnableWidth > Mathf.Abs (diff.x) 
 				&& timeDiff < flickEnableTime
-				&& diff.magnitude > flickThreshold) {
+				&& diff.magnitude > flickThreshold
+				&& lastFlickBeat != Mathf.FloorToInt(beatCount)) {
+
+				lastFlickBeat != Mathf.FloorToInt (beatCount);
 				if (diff.y > 0) {
 					Debug.Log ("上flic!");
 					Vector2Int nowDirection = nextPosition - nowPosition;

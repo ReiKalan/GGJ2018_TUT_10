@@ -246,7 +246,7 @@ public class RunGame : MonoBehaviour {
 			if (flickEnableWidth > Mathf.Abs (diff.x) 
 				&& timeDiff < flickEnableTime
 				&& diff.magnitude > flickThreshold
-				&& lastFlickBeat != beatCount) {
+				&& lastFlickBeat != Mathf.FloorToInt(beatCount)) {
 
 				lastFlickBeat = Mathf.FloorToInt (beatCount);
 

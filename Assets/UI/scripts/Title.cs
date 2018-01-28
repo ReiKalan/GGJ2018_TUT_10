@@ -23,7 +23,7 @@ public class Title : MonoBehaviour {
         if(Input.GetMouseButtonDown(0))
         {
 			SceneManager.UnloadSceneAsync ("Title");
-			SceneManager.LoadScene("StageSelect", LoadSceneMode.Additive);
+			SceneManager.LoadScene("MangaTutorialScene", LoadSceneMode.Additive);
         }
 	}
 }

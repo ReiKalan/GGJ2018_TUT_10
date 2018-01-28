@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311918, g: 0.3807398, b: 0.35872716, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311947, g: 0.38074005, b: 0.35872722, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -238,7 +238,7 @@ Prefab:
     - target: {fileID: 224512567310094870, guid: ecfc8029c4a9a4df58233026c41396a3,
         type: 2}
       propertyPath: m_SizeDelta.x
-      value: 1286
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224512567310094870, guid: ecfc8029c4a9a4df58233026c41396a3,
         type: 2}
@@ -248,7 +248,7 @@ Prefab:
     - target: {fileID: 224512567310094870, guid: ecfc8029c4a9a4df58233026c41396a3,
         type: 2}
       propertyPath: m_AnchorMin.x
-      value: 0.5
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 224512567310094870, guid: ecfc8029c4a9a4df58233026c41396a3,
         type: 2}
@@ -258,7 +258,7 @@ Prefab:
     - target: {fileID: 224512567310094870, guid: ecfc8029c4a9a4df58233026c41396a3,
         type: 2}
       propertyPath: m_AnchorMax.x
-      value: 0.5
+      value: 0.95
       objectReference: {fileID: 0}
     - target: {fileID: 224512567310094870, guid: ecfc8029c4a9a4df58233026c41396a3,
         type: 2}
@@ -352,7 +352,7 @@ Prefab:
     - target: {fileID: 224767130978243258, guid: 54dc6d77cd9e94940a4cab13a9796ad5,
         type: 2}
       propertyPath: m_SizeDelta.x
-      value: 100
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224767130978243258, guid: 54dc6d77cd9e94940a4cab13a9796ad5,
         type: 2}
@@ -362,7 +362,7 @@ Prefab:
     - target: {fileID: 224767130978243258, guid: 54dc6d77cd9e94940a4cab13a9796ad5,
         type: 2}
       propertyPath: m_AnchorMin.x
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224767130978243258, guid: 54dc6d77cd9e94940a4cab13a9796ad5,
         type: 2}
@@ -372,7 +372,7 @@ Prefab:
     - target: {fileID: 224767130978243258, guid: 54dc6d77cd9e94940a4cab13a9796ad5,
         type: 2}
       propertyPath: m_AnchorMax.x
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 224767130978243258, guid: 54dc6d77cd9e94940a4cab13a9796ad5,
         type: 2}
@@ -692,11 +692,15 @@ MonoBehaviour:
   palsSound: {fileID: 8300000, guid: 989afb46c0b181b41a3db3d578ae6efc, type: 3}
   rotateSound: {fileID: 8300000, guid: 989afb46c0b181b41a3db3d578ae6efc, type: 3}
   startSound: {fileID: 8300000, guid: 989afb46c0b181b41a3db3d578ae6efc, type: 3}
+  successSound: {fileID: 0}
+  faildSound: {fileID: 0}
+  palsSource: {fileID: 0}
   seSource: {fileID: 1467843896}
+  comboEffect: {fileID: 0}
   mainCharacter: {fileID: 2054813711}
   deathEffect: {fileID: 987676222}
   nowPosition: {x: 0, y: 0}
-  field: {fileID: 1586084591}
+  _field: {fileID: 0}
   prevStartUI: {fileID: 895623307}
   echoLiteInstance: {fileID: 2054813713}
   speed: {x: 0, y: 0}
@@ -798,12 +802,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
---- !u!114 &1586084591 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114386307681631426, guid: 279d6ebf4618bba44a28c032633480e6,
-    type: 2}
-  m_PrefabInternal: {fileID: 1207512192}
-  m_Script: {fileID: 11500000, guid: cd5abbe74d2c74b1da4cf80787f16751, type: 3}
 --- !u!1 &1633473069
 GameObject:
   m_ObjectHideFlags: 0
@@ -1098,7 +1096,7 @@ Prefab:
     - target: {fileID: 224105067930117290, guid: d69454796b8414a91b3ec551d74c742d,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: 600
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 224105067930117290, guid: d69454796b8414a91b3ec551d74c742d,
         type: 2}
@@ -1203,6 +1201,7 @@ MonoBehaviour:
   expandRadiusTime: 0.25
   contractRadiusTime: 0.75
   lightAngle: 20
+  combo: 0
 --- !u!1 &2091842613
 GameObject:
   m_ObjectHideFlags: 0

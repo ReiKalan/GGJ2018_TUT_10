@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: d29da51a201c0fa438a235a7c4684e08
-timeCreated: 1517050886
+timeCreated: 1517102954
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -12,6 +12,13 @@ TextureImporter:
     21300010: GUI_getBook
     21300012: GUI_getGold
     21300014: GUI_getCora
+    21300016: GUI_Button
+    21300018: GUI_StageFont
+    21300020: GUI_number1
+    21300022: GUI_TutorialFont
+    21300024: GUI_SelectFont
+    21300026: GUI_number2
+    21300028: GUI_number3
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -205,6 +212,104 @@ TextureImporter:
         height: 120
       alignment: 5
       pivot: {x: 1, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: GUI_Button
+      rect:
+        serializedVersion: 2
+        x: 767
+        y: 853
+        width: 288
+        height: 279
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 15, y: 22, z: 22, w: 15}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: GUI_StageFont
+      rect:
+        serializedVersion: 2
+        x: 1100
+        y: 941
+        width: 563
+        height: 192
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: GUI_number1
+      rect:
+        serializedVersion: 2
+        x: 1100
+        y: 266
+        width: 81
+        height: 184
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: GUI_TutorialFont
+      rect:
+        serializedVersion: 2
+        x: 1096
+        y: 709
+        width: 867
+        height: 191
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: GUI_SelectFont
+      rect:
+        serializedVersion: 2
+        x: 1101
+        y: 474
+        width: 633
+        height: 192
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: GUI_number2
+      rect:
+        serializedVersion: 2
+        x: 1196
+        y: 265
+        width: 107
+        height: 189
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: GUI_number3
+      rect:
+        serializedVersion: 2
+        x: 1312
+        y: 260
+        width: 112
+        height: 194
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

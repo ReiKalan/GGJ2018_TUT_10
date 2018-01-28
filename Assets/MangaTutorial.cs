@@ -13,7 +13,7 @@ public class MangaTutorial : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		directors [0].Play ();
+		//directors [0].Play ();
 
 	}
 	

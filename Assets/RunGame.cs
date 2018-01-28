@@ -258,7 +258,7 @@ public class RunGame : MonoBehaviour {
 				&& diff.magnitude > flickThreshold
 				&& lastFlickBeat != Mathf.FloorToInt(beatCount)) {
 
-				lastFlickBeat != Mathf.FloorToInt (beatCount);
+				lastFlickBeat = Mathf.FloorToInt (beatCount);
 				if (diff.y > 0) {
 					Debug.Log ("上flic!");
 					Vector2Int nowDirection = nextPosition - nowPosition;
